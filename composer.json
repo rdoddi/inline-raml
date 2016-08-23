@@ -1,15 +1,14 @@
 {
-  "name": "pauldevelop/library-raml",
+  "name": "rdoddi/inline-raml",
   "description": "Generate RAML documents from annotated class files.",
-  "keywords": ["PaulDevelop", "library"],
-  "homepage": "https://github.com/pauldevelop/library-raml",
+  "keywords": ["raml", "library"],
+  "homepage": "https://github.com/rdoddi/inline-raml",
   "type": "library",
   "license": "MIT",
   "authors": [
     {
-      "name": "Rüdiger Scheumann",
-      "email": "info@pauldevelop.de",
-      "homepage": "http://pauldevelop.de"
+      "name": "Ramesh Doddi",
+      "email": "rdoddi@iremote.net"
     }
   ],
   "minimum-stability": "dev",
@@ -26,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "com\\pauldevelop\\library\\raml\\": "src/class"
+      "net\\iremote\\library\\inline\\raml\\": "src/class"
     }
   },
   "extra": {

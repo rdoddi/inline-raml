@@ -1,4 +1,4 @@
-# library-raml
+# library-inline-raml
 Generate RAML documents from annotated php source files.
 
 [RAML](http://raml.org/) is a modeling language for describing RESTful APIs and is a supplementary document that comes 

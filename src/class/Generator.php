@@ -1,6 +1,6 @@
 <?php
 
-namespace com\pauldevelop\library\raml;
+namespace net\iremote\library\inline\raml;
 
 class Generator
 {

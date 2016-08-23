@@ -2,7 +2,7 @@
 
 namespace Com\PaulDevelop\Library\Auth;
 
-use com\pauldevelop\library\raml\Generator;
+use net\iremote\library\inline\raml\Generator;
 
 class GeneratorTest extends \PHPUnit_Framework_TestCase
 {

@@ -2,11 +2,11 @@
 
 namespace Com\PaulDevelop\Library\Auth;
 
-use com\pauldevelop\library\raml\Annotation;
-use com\pauldevelop\library\raml\AnnotationCollection;
-use com\pauldevelop\library\raml\AnnotationParameter;
-use com\pauldevelop\library\raml\AnnotationParameterCollection;
-use com\pauldevelop\library\raml\Parser;
+use net\iremote\library\inline\raml\Annotation;
+use net\iremote\library\inline\raml\AnnotationCollection;
+use net\iremote\library\inline\raml\AnnotationParameter;
+use net\iremote\library\inline\raml\AnnotationParameterCollection;
+use net\iremote\library\inline\raml\Parser;
 
 class ParserTest extends \PHPUnit_Framework_TestCase
 {
