@@ -18,7 +18,8 @@ data the parser found in the source code files.
 To find relevant RAML annotations in source files, use the [Parser](src/class/Parser.php) class to have them parsed.
  
 ```php
-$annotations = Parser::process(
+$parser = new Parser();
+$annotations = $parser->process(
     '/path/to/class.php'
 );
 ```
