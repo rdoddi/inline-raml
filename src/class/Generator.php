@@ -5,7 +5,17 @@ namespace net\iremote\library\inline\raml;
 class Generator
 {
     #region methods
-    /**
+	/**
+	 * @var Parser
+	 */
+	private $parser;
+	
+	public function __construct($parser) 
+	{		
+		$this->parser = $parser;
+	}
+	
+	/**
      * @param string $apiTitle
      * @param string $directoryToScan
      * @param bool   $recursion
@@ -22,7 +32,7 @@ class Generator
         $isFirst = true;
         $fileList = self::getFiles($directoryToScan, $recursion);
         foreach ($fileList as $file) {
-            $fileAnnotations = Parser::process($file);
+            $fileAnnotations = $this->parser->process($file);
             if (($titleAnnotation = self::findAnnotation($fileAnnotations->getFileLevel(), 'title')) == null
                 || (($titleAnnotation = self::findAnnotation($fileAnnotations->getFileLevel(), 'title')) !== null
                     && $titleAnnotation->getParameter()['title']->getValue() != $apiTitle)
