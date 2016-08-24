@@ -2,17 +2,30 @@
 
 namespace net\iremote\library\inline\raml;
 
-abstract class Parser
+class Parser
 {
-    #region methods
+    #region methods    
+	/**
+	 * @var string
+	 */
+	private $ramlNamespace = '';
+	 
+	/**
+	 * @param string $ramlNamespace
+	 */
+	public function __construct($ramlNamespace = 'raml/annotations/') 
+	{
+		$this->ramlNamespace = $ramlNamespace;
+	}
+	
     /**
      * @param string $file
      *
      * @return FileAnnotations
      */
-    public static function process($file = '')
+    public function process($file = '')
     {
-        return self::parseFile($file);
+        return $this->parseFile($file);
     }
 
     /**
@@ -20,7 +33,7 @@ abstract class Parser
      *
      * @return FileAnnotations
      */
-    private static function parseFile($file = '')
+    private  function parseFile($file = '')
     {
         // init
         $result = new FileAnnotations();
@@ -37,7 +50,7 @@ abstract class Parser
         if (preg_match_all('#/\*\*((?:(?!\*/).)+)\*/\s*(?:public\s+|private\s+|protected\s+)?class#', $content,
             $matches)) { // public, private, protected, abstract
             foreach ($matches[1] as $docblock) { // TODO only one!! replace loop with direct array access
-                $annotations = self::parseDocblock($docblock);
+                $annotations = $this->parseDocblock($docblock);
                 $classLevelDocblock = $docblock;
                 $result->setClassLevel($annotations);
             }
@@ -51,7 +64,7 @@ abstract class Parser
                 $potentialFileLevelDocblock = '';
                 //echo "Sorry, no file level docblock available.".PHP_EOL;
             } else {
-                $annotations = self::parseDocblock($potentialFileLevelDocblock);
+                $annotations = $this->parseDocblock($potentialFileLevelDocblock);
                 $result->setFileLevel($annotations);
             }
 
@@ -75,7 +88,7 @@ abstract class Parser
         )) { // public, private, protected, abstract
             $annotationArray = array();
             foreach ($matches[1] as $docblock) {
-                array_push($annotationArray, self::parseDocblock($docblock));
+                array_push($annotationArray, $this->parseDocblock($docblock));
             }
             $result->setMethodsLevel($annotationArray);
         }
@@ -101,7 +114,7 @@ abstract class Parser
      *
      * @return array
      */
-    private static function parseDocblock($docblock = '')
+    private  function parseDocblock($docblock = '')
     {
         //echo $docblock.PHP_EOL;
         // init
@@ -110,7 +123,7 @@ abstract class Parser
         $debug = false;
 
         // config
-        $ramlNamespace = '\raml\annotations';
+        $ramlNamespace = $this->ramlNamespace;
 
         // action
         $annotationIsOpen = false;
